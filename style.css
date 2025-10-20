@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+}
+
+main {
+  width: 100%;
+}
+main section.view1 {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  /* -------- TOP SECTION -------- */
+  /* -------- BOTTOM GRID SECTION -------- */
+}
+main section.view1 #top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+main section.view1 #top h1 {
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+main section.view1 #top h5 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: #333;
+  font-weight: 400;
+}
+main section.view1 #top button {
+  margin: 1.2rem 0.5rem 0;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+main section.view1 #top button i {
+  margin-left: 8px;
+}
+main section.view1 #top button:hover {
+  transform: scale(1.05);
+  background-color: #ff007f;
+}
+main section.view1 #bottom {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "st" "nd" "rd";
+  gap: 2rem;
+  padding: 2rem 0;
+  /* Each row with 2 images side by side */
+  /* -----------------video ------------------------*/
+}
+main section.view1 #bottom #first {
+  grid-area: st;
+}
+main section.view1 #bottom #second {
+  grid-area: nd;
+}
+main section.view1 #bottom #third {
+  grid-area: rd;
+}
+main section.view1 #bottom #first, main section.view1 #bottom #second, main section.view1 #bottom #third {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  justify-items: center;
+}
+main section.view1 #bottom #first .img, main section.view1 #bottom #second .img, main section.view1 #bottom #third .img {
+  width: 100%;
+}
+main section.view1 #bottom #first .img img, main section.view1 #bottom #second .img img, main section.view1 #bottom #third .img img {
+  width: 20%;
+  height: auto;
+  border-radius: 12px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main section.view1 #bottom .left img {
+  animation: rghtscroll;
+  animation-timeline: view();
+}
+@keyframes rghtscroll {
+  from {
+    transform: translateX(-15px);
+  }
+  to {
+    transform: translateX(30px);
+  }
+}
+main section.view1 #bottom .right img {
+  animation: leftscroll;
+  animation-timeline: view();
+}
+@keyframes leftscroll {
+  from {
+    transform: translateX(30px);
+  }
+  to {
+    transform: translateX(-15px);
+  }
+}
+main section.view1 #bottom #bodyvideo {
+  width: 100%;
+  margin-top: -20vw;
+  position: absolute;
+}
+main section.view1 #bottom #bodyvideo video {
+  width: 40%;
+}
+main section.view2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main section.view2 #cardsection {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  /* -------- Pink Card -------- */
+}
+main section.view2 #cardsection .card {
+  width: 25%;
+  height: 80vh;
+  border-radius: 20px;
+  position: relative;
+  padding: 2rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  overflow: hidden;
+}
+main section.view2 #cardsection .card h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+main section.view2 #cardsection .card p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+main section.view2 #cardsection #pinkcard {
+  background-image: url(./Assets/65c915a4bf7b6f26de86f7ef_pink-Background.webp);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  /* -------- Main Card Image -------- */
+  /* -------- Hover Effect -------- */
+  /* -------- Floating Top Image -------- */
+}
+main section.view2 #cardsection #pinkcard #mainimg img {
+  width: 106%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  -o-object-fit: contain;
+     object-fit: contain;
+  pointer-events: none;
+  transition: transform 0.5s ease;
+  z-index: 2;
+}
+main section.view2 #cardsection #pinkcard:hover #mainimg img {
+  transform: translateX(-50%) scale(1.1);
+}
+main section.view2 #cardsection #pinkcard .floating {
+  z-index: 3;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+main section.view2 #cardsection #pinkcard .floating #topfloat img {
+  width: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+  animation: moveLeft 1 linear both;
+  animation-timeline: view();
+  animation-range: entry 0% exit 100%;
+}
+
+/* -------- Scroll Keyframes for Floating Image -------- */
+@keyframes moveLeft {
+  from {
+    transform: translate(-50%, -50%) translateX(0%);
+  }
+  to {
+    transform: translate(-50%, -50%) translateX(-10%);
+  }
+}
+/* ---------------- VIEW 2 ---------------- *//*# sourceMappingURL=style.css.map */
