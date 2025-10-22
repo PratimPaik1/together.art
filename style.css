@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   font-family: "Poppins", sans-serif;
@@ -12,6 +13,7 @@ html, body {
 
 main {
   width: 100%;
+  /* -------- SECTION VIEW 2 -------- */
 }
 main section.view1 {
   width: 100%;
@@ -70,7 +72,8 @@ main section.view1 #bottom {
   gap: 2rem;
   padding: 2rem 0;
   /* Each row with 2 images side by side */
-  /* -----------------video ------------------------*/
+  /* Animation for left/right images */
+  /* ----------------- VIDEO ------------------------ */
 }
 main section.view1 #bottom #first {
   grid-area: st;
@@ -81,17 +84,23 @@ main section.view1 #bottom #second {
 main section.view1 #bottom #third {
   grid-area: rd;
 }
-main section.view1 #bottom #first, main section.view1 #bottom #second, main section.view1 #bottom #third {
+main section.view1 #bottom #first,
+main section.view1 #bottom #second,
+main section.view1 #bottom #third {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   align-items: center;
   justify-items: center;
 }
-main section.view1 #bottom #first .img, main section.view1 #bottom #second .img, main section.view1 #bottom #third .img {
+main section.view1 #bottom #first .img,
+main section.view1 #bottom #second .img,
+main section.view1 #bottom #third .img {
   width: 100%;
 }
-main section.view1 #bottom #first .img img, main section.view1 #bottom #second .img img, main section.view1 #bottom #third .img img {
+main section.view1 #bottom #first .img img,
+main section.view1 #bottom #second .img img,
+main section.view1 #bottom #third .img img {
   width: 20%;
   height: auto;
   border-radius: 12px;
@@ -132,94 +141,164 @@ main section.view1 #bottom #bodyvideo video {
 }
 main section.view2 {
   width: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* Floating image PINK CARD */
 }
 main section.view2 #cardsection {
+  position: relative;
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-  /* -------- Pink Card -------- */
 }
-main section.view2 #cardsection .card {
+main section.view2 .card {
+  position: relative;
   width: 25%;
   height: 80vh;
   border-radius: 20px;
-  position: relative;
-  padding: 2rem;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  text-align: left;
   overflow: hidden;
-}
-main section.view2 #cardsection .card h1 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-main section.view2 #cardsection .card p {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-main section.view2 #cardsection #pinkcard {
-  background-image: url(./Assets/65c915a4bf7b6f26de86f7ef_pink-Background.webp);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  color: black;
   text-align: center;
+  padding: 1rem;
+}
+main section.view2 .card h1 {
+  font-size: 1.5rem;
+  opacity: 75%;
+}
+main section.view2 .card p {
+  padding: 0.5rem;
+  opacity: 70%;
+}
+main section.view2 .card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 1s ease; /* smooth animation */
+  transform: scale(1);
+  z-index: 1;
+}
+main section.view2 #pinkcard::before {
+  background-image: url(./Assets/65c915a4bf7b6f26de86f7ef_pink-Background.webp);
+}
+main section.view2 #yellowcard::before {
+  background-image: url(./Assets/65c7c1e4d9f74852725ad840_Cards\ \ --lummi.webp);
+}
+main section.view2 .card:hover::before {
+  transform: scale(1.15); /* zoom effect */
+}
+main section.view2 .card > * {
   position: relative;
-  overflow: hidden;
-  /* -------- Main Card Image -------- */
-  /* -------- Hover Effect -------- */
-  /* -------- Floating Top Image -------- */
+  z-index: 2; /* keeps text above image */
 }
-main section.view2 #cardsection #pinkcard #mainimg img {
-  width: 106%;
-  height: auto;
+main section.view2 .floatingPinkcard {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  -o-object-fit: contain;
-     object-fit: contain;
-  pointer-events: none;
-  transition: transform 0.5s ease;
-  z-index: 2;
-}
-main section.view2 #cardsection #pinkcard:hover #mainimg img {
-  transform: translateX(-50%) scale(1.1);
-}
-main section.view2 #cardsection #pinkcard .floating {
-  z-index: 3;
-  position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
+  width: 40%;
+  height: 80vh;
+  overflow: visible;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  z-index: 9;
+  /* FT animation fixed */
 }
-main section.view2 #cardsection #pinkcard .floating #topfloat img {
-  width: 60%;
-  position: absolute;
+main section.view2 .floatingPinkcard #bottomfloat {
+  width: 90%;
+  position: relative;
+  display: flex;
+  z-index: 12;
   top: 50%;
+  left: 0%;
+}
+main section.view2 .floatingPinkcard #bottomfloat img {
+  width: 10%;
+}
+main section.view2 .floatingPinkcard #ft {
+  position: absolute;
+  top: 200%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  animation: moveright;
+  animation-timeline: view();
+}
+main section.view2 .floatingPinkcard #nd {
+  position: absolute;
+  top: 300%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  animation: moveright;
+  animation-timeline: view();
+}
+main section.view2 .floatingPinkcard #rd {
+  position: relative;
+  top: 360%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
-  pointer-events: none;
-  animation: moveLeft 1 linear both;
+  animation: moveright;
   animation-timeline: view();
-  animation-range: entry 0% exit 100%;
 }
-
-/* -------- Scroll Keyframes for Floating Image -------- */
+@keyframes moveright {
+  from {
+    transform: translate(-50%, -50%) translateX(-10%);
+  }
+  to {
+    transform: translate(-50%, -50%) translateX(20%);
+    scale: 1.2;
+  }
+}
 @keyframes moveLeft {
   from {
     transform: translate(-50%, -50%) translateX(0%);
   }
   to {
     transform: translate(-50%, -50%) translateX(-10%);
+    width: 49%;
+    scale: 1.2;
   }
 }
-/* ---------------- VIEW 2 ---------------- *//*# sourceMappingURL=style.css.map */
+main section.view2 .floatingPinkcard #topfloat img {
+  width: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: moveLeft;
+  animation-timeline: view();
+  scale: 1.2;
+}
+main section.view2 .flotingYellowcard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  z-index: 9;
+}
+main section.view2 .flotingYellowcard #jose {
+  width: 40%;
+  position: absolute;
+  top: 40%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  animation-name: jose;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-timeline: view();
+}
+@keyframes jose {
+  from {
+    transform: translate(-50%, -50%) translateX(0%);
+  }
+  to {
+    transform: translate(-50%, -50%) translateX(30%);
+  }
+}/*# sourceMappingURL=style.css.map */
